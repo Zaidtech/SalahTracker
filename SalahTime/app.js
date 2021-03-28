@@ -1,11 +1,9 @@
 const express = require('express');
 const ejs = require('ejs');
 const request = require('request');
-var fs = require('fs');
 const { parse } = require('path');
 const { Server } = require('http');
 var spawn = require('child_process').spawn;
-// const requestIp = require('request-ip');
 
 var app = express();
 
@@ -19,7 +17,6 @@ app.get("/",function(req,res){
 });
 
 app.get('/home',function(req,res){
-
     var process = spawn('python',["./getLocation.py"]);    
     process.stdout.on('data', function(data) {
         coordinates = data.toString().split('\n');
@@ -35,7 +32,8 @@ app.get('/time',function(req,res){
     var parsedData = JSON.parse(body);
     timings = parsedData.data.timings;
     // console.log(timings);    
-    res.send(timings.toString());
+    res.send(timings);
+
     }); 
 });
 
