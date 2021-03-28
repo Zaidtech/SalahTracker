@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click to allow to access your coordinates.</p>
+<button onclick="getLocation()">Allow location tracking</button>
+
+<p id="coordinates">
+  <!-- lat and lon goes here!!1 -->
+</p>
+
+<form action="/location" method="POST">
+  <input type="text" name="newpost"  id="lat" placeholder="Add new post" style="display: none;">
+  <input type="text" name="newpost"  id="lon" placeholder="Add new post" style="display: none;">
+
+  <button>Get Salah Timings</button>
+</form>
+
+
+<script>
+
+var x = document.getElementById("coordinates");
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+var lat = document.getElementById('lat');
+var lon = document.getElementById('lon');
+
+function showPosition(position) {
+
+  lat.value = position.coords.latitude;
+  lon.value = position.coords.longitude;
+  // lon.value = position.coords.longitude;
+
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+  // console.log(lat); chaking ... :-)
+}
+
+function showError(error) {
+
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;  
+  }
+
+}
+
+function showTime(){
+  
+// send a post req to the /time route
+
+}
+
+</script>
+
+</body>
+</html>

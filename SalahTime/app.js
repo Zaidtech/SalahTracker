@@ -5,6 +5,7 @@ const { parse } = require('path');
 const { Server } = require('http');
 var spawn = require('child_process').spawn;
 
+
 var app = express();
 
 var timings;
@@ -17,6 +18,7 @@ app.get("/",function(req,res){
 });
 
 app.get('/home',function(req,res){
+
     var process = spawn('python',["./getLocation.py"]);    
     process.stdout.on('data', function(data) {
         coordinates = data.toString().split('\n');
