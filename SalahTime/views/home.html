@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>SalahTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  </head>
 <body>
 
-<p>Click to allow to access your coordinates.</p>
+<h1>Click to allow to access your coordinates.</h1>
 <button onclick="getLocation()">Allow location tracking</button>
 
-<p id="coordinates">
+<p id="coordinates" style="font-size: large;">
   <!-- lat and lon goes here!!1 -->
 </p>
 
 <form action="/location" method="POST">
-  <input type="text" name="newpost"  id="lat" placeholder="Add new post" style="display: none;">
-  <input type="text" name="newpost"  id="lon" placeholder="Add new post" style="display: none;">
-
+  <input type="text" name="location"  id="lat" placeholder="Add new post" style="display: none;">
+  <input type="text" name="location"  id="lon" placeholder="Add new post" style="display: none;">
   <button>Get Salah Timings</button>
 </form>
 

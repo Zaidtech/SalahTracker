@@ -21,14 +21,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/',function(req,res){
     res.sendFile('home.html',{root:'views'})
-
 });
 
 app.get('/time',function(req,res){
-    // var name = req.body.name;
-    // console.log(req.name);
-    // res.send("Welcome to the Salah time page");
-    // console.log(coordinates.split('\n')[0]);
+
     lat = coordinates[0];
     lon = coordinates[1];
     console.log("Got latiitude as : ", lat);
@@ -44,7 +40,7 @@ app.get('/time',function(req,res){
 
 app.post("/location",function(req,res){
     // console.log(req.body.newpost);
-    coordinates = req.body.newpost;
+    coordinates = req.body.location;
     console.log(coordinates);
 
     // var newpost = req.body.newpost;
