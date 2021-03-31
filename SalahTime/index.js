@@ -38,7 +38,6 @@ app.get('/time',function(req,res){
 
 
 app.post("/location",function(req,res){
-    // console.log(req.body.newpost);
     coordinates = req.body.location;
     res.redirect("/time");
 });
