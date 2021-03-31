@@ -24,7 +24,6 @@ app.get('/',function(req,res){
 });
 
 app.get('/time',function(req,res){
-
     lat = coordinates[0];
     lon = coordinates[1];
     console.log("Got latiitude as : ", lat);
@@ -32,8 +31,8 @@ app.get('/time',function(req,res){
     request(`http://api.aladhan.com/v1/timings/time?latitude=${lat}&longitude=${lon}&method=4`,function(error,responce,body){
     var parsedData = JSON.parse(body);
     timings = parsedData.data.timings;
-    console.log(timings);    
-    res.send(timings);
+
+    res.render('time.ejs',{timings:timings});
     }); 
 });
 
@@ -41,11 +40,6 @@ app.get('/time',function(req,res){
 app.post("/location",function(req,res){
     // console.log(req.body.newpost);
     coordinates = req.body.location;
-    console.log(coordinates);
-
-    // var newpost = req.body.newpost;
-    // posts.push(newpost);
-    // res.send("Added new post");
     res.redirect("/time");
 });
 
